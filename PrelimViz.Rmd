@@ -1,0 +1,380 @@
+---
+title: "Preliminary Viewing"
+author: "Madelyn Hair"
+date: "2023-01-10"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+Install necessary packages here: 
+```{r}
+
+library(ggplot2)
+library("plyr")
+library("dplyr")                          
+library("readr")  
+library(stringr)
+library(hms)
+```
+
+Basic Data Organization
+```{r}
+all<-read.csv("data/all1.csv")
+all$exposure <- factor(all$exposure, levels = c("pre", "act", "post"))
+all$Experimental.Day <- as.factor(all$Experimental.Day)
+all$bottle <- factor(all$bottle, levels = c('pre', 'post'))
+trunc<-all[all$rtime >= "10:00:00" & all$rtime <= "14:00:00",]
+trunc$time <- as_hms(trunc$time)
+sub <- all[all$rtime >= "12:30:00" & all$rtime <= "14:00:00",]
+
+```
+
+General Octopus Plots: 
+```{r}
+
+#all %>%
+  #filter(Subject == 'Octopus')%>%
+  #group_by(Oleamide.Exposure, Behavior) #%>%
+ # summarise(avg_duration = mean(Duration..s.))# %>%
+  #ggplot(aes(x = Behavior, y = avg_duration)) + 
+ # geom_boxplot(aes(color=Oleamide.Exposure))
+#ggplot(data = data, aes(x = Oleamide.Exposure,y = )) +
+  #stat_summary()
+
+trunc %>%
+   filter(Subject == 'Octopus')%>%
+    filter(!Behavior %in% c("Color change", "Grope", 'Predation', "Feeding", "Unobservable")) %>%
+  group_by(exposure, ind, Behavior) %>%
+  summarise(mean = mean(Duration..s.), sd = sd(Duration..s.), count = n()) %>%
+  mutate(se = sd / sqrt(count),
+         lower_se = mean - se,
+         upper_se = mean + se) %>%
+  ggplot(aes(x = exposure, y = mean, color = ind)) +
+  geom_line(aes(group = ind))+
+  geom_point()+
+  geom_errorbar(aes(ymin = lower_se, ymax = upper_se), width = .2)+
+  facet_wrap(~Behavior) +
+  labs(y = "Avg Duration and Standard Errorbars")+ 
+  geom_hline(yintercept = 1800)+
+  theme_bw()
+
+trunc %>%
+   filter(Subject == 'Octopus')%>%
+    filter(Behavior == 'Feeding') %>%
+  group_by(exposure, ind, m1) %>%
+  summarise(mean = mean(Duration..s.), sd = sd(Duration..s.), count = n()) %>%
+  mutate(se = sd / sqrt(count),
+         lower_se = mean - se,
+         upper_se = mean + se) %>%
+  ggplot(aes(x = exposure, y = mean, color = ind)) +
+  geom_point()+
+  geom_errorbar(aes(ymin = lower_se, ymax = upper_se), width = .2)+
+  facet_wrap(~m1)+
+  labs(y = "Avg Duration and Standard Errorbars")+ 
+  geom_hline(yintercept = 1800) +
+  theme_bw()
+
+
+trunc %>%
+   filter(Subject == 'Octopus')%>%
+    filter(!Behavior %in% c("Color change", "Grope", 'Predation')) %>%
+  ggplot(aes(x = Experimental.Day, y = Duration..s., color = ind)) +
+  stat_summary(fun.data = "mean_cl_boot", position = position_dodge(.1)) +
+  facet_wrap(~Behavior)+
+  labs(y = "Avg Duration and Bootstrapped CI")+ 
+  geom_hline(yintercept = 1800)
+
+trunc %>%
+   filter(Subject == 'Octopus')%>%
+    filter(!Behavior %in% c("Color change", "Grope", 'Predation')) %>%
+  ggplot(aes(x = Experimental.Day, fill = ind)) +
+  geom_histogram(stat = 'count', position = position_dodge2(1)) +
+  facet_wrap(~Behavior) +
+  labs(y = "Event Count")
+
+
+sub%>%
+  filter(Subject == 'Octopus') %>%
+  filter(Behavior %in% c("Color change", "Grope", 'Predation')) %>%
+  ggplot(aes(x = Behavior, fill = exposure)) + 
+  geom_histogram(stat = 'count') +
+  facet_wrap(~Experimental.Day)+
+  scale_fill_manual(values = c("green3", "red", "blue"))
+
+sub %>%
+   filter(Subject == 'Octopus') %>%
+  filter(Behavior == 'Predation') %>%
+  ggplot(aes(x = m2, fill = exposure)) +
+  geom_histogram(stat = 'count') + 
+  facet_wrap(~Experimental.Day) +  
+    scale_fill_manual(values = c("green3", "red", "blue"))
+sub %>%
+  filter(Behavior == "Predation")
+
+trunc%>%
+  filter(Subject =="Octopus")%>%
+  filter(Behavior == 'Feeding') %>%
+  ggplot(aes(x = Experimental.Day, y = Duration..s., color = ind))+
+  stat_summary(fun.data = "mean_cl_boot", position = position_dodge(.2)) + 
+  facet_wrap(~Modifiers) +
+  labs(y = "Duration of Feeding (sec)") + 
+  geom_hline(yintercept = 1800)
+
+
+
+```
+
+ Getting Into Predation and Feeding Plots: Skip These ones! 
+```{r}
+
+sub %>%
+  filter(Subject == 'Octopus') %>%
+  filter(Behavior %in% c('Grope', "Predation")) %>%
+  ggplot(aes(x = Experimental.Day, color =  ind)) + 
+  geom_point(stat = 'count', size = 3) + 
+  geom_line(stat = 'count', aes(group = ind))+
+  labs (title = 'Predation Attempts and Gropes') +
+  theme_light()+
+  theme(plot.title = element_text(hjust = .5))
+
+sub %>%
+  filter(Subject == 'Octopus') %>%
+  filter(Behavior %in% c('Grope', "Predation")) %>%
+  ggplot(aes(x = Experimental.Day, fill =  exposure)) + 
+  geom_histogram(stat = 'count') + 
+  labs (title = 'Predation Attempts and Gropes') +
+  facet_wrap(~ind)+
+  theme_light()+
+  theme(plot.title = element_text(hjust = .5)) + 
+  scale_fill_manual(values = c("green3", "red", "blue"))
+
+trunc %>%
+  filter(Subject == 'Octopus') %>%
+  filter(Behavior == 'Predation') %>%
+   ggplot(aes(x = Experimental.Day, fill =  ind)) + 
+  geom_histogram(stat = 'count') + 
+  labs (y = 'Predation Events')
+```
+
+Prey Behaviors- durations
+```{r}
+unique(trunc$Behavior)
+trunc %>%
+   filter(Subject_tax != "Octopus") %>%
+  filter(Behavior %in% c("Stationary", "Burrow")) %>%
+  group_by(ind, Subject_tax, Experimental.Day, Behavior) %>%
+  ggplot(aes(x = Experimental.Day, y = Duration..s.,fill = Subject_tax)) + 
+  geom_violin(position = position_dodge(.3)) + 
+  #facet_wrap(~Subject_tax) + 
+  labs(y = "Time Spent Stationary")+ 
+  geom_hline(yintercept = 1800)
+
+trunc %>%
+  filter(Behavior == "Roaming") %>%
+  filter(Subject_tax != "Octopus") %>%
+  group_by(Subject_tax, Experimental.Day, bottle) %>%
+  summarise(mean = mean(Duration..s.), sd = sd(Duration..s.), count = n()) %>%
+  mutate(se = sd / sqrt(count),
+         lower_se = mean - se,
+         upper_se = mean + se)  %>%
+  ggplot(aes(x = bottle, y = mean, color = Subject_tax)) + 
+  geom_point() + 
+  geom_line(aes(group = Subject_tax))+
+  geom_errorbar(aes(ymin = lower_se, ymax = upper_se), width = .2)+
+  facet_grid(rows = vars(`Subject_tax`), cols = vars(`Experimental.Day`)) + 
+  labs(y = "Time (s)",x = 'Bottle Addition Status', title = 'Average Roaming Duration')+ 
+  geom_hline(yintercept = 1800) +
+  theme_bw()+
+  theme(plot.title = element_text(hjust = .5))
+  
+ 
+
+trunc %>%
+  filter(Behavior %in% c("Stationary", "Burrow")) %>%
+  filter(Subject_tax != "Octopus") %>%
+  group_by(Subject_tax, Experimental.Day, bottle) %>%
+  summarise(mean = mean(Duration..s.), sd = sd(Duration..s.), count = n()) %>%
+  mutate(se = sd / sqrt(count),
+         lower_se = mean - se,
+         upper_se = mean + se)  %>%
+  ggplot(aes(x = bottle, y = mean, color = Subject_tax)) + 
+  geom_point() + 
+  geom_line(aes(group = Subject_tax))+
+  geom_errorbar(aes(ymin = lower_se, ymax = upper_se), width = .2)+
+  facet_grid(rows = vars(`Subject_tax`), cols = vars(`Experimental.Day`)) + 
+  labs(y = "Time (s)", x = "Bottle Addition Status", title = "Average Stationary Duration")+ 
+  geom_hline(yintercept = 1800) +
+   theme_bw()+
+  theme(plot.title = element_text(hjust = .5))
+
+
+ trunc %>%
+  filter(Behavior == 'Climb') %>%
+  filter(!Subject_tax %in% c("Octopus", "Hermit Crab")) %>%
+  group_by(Subject_tax, Experimental.Day, bottle) %>%
+  summarise(mean = mean(Duration..s.), sd = sd(Duration..s.), count = n()) %>%
+  mutate(se = sd / sqrt(count),
+         lower_se = mean - se,
+         upper_se = mean + se)  %>%
+  ggplot(aes(x = bottle, y = mean, color = Subject_tax)) + 
+  geom_point() + 
+  geom_line(aes(group = Subject_tax))+
+  geom_errorbar(aes(ymin = lower_se, ymax = upper_se), width = .2)+
+  facet_grid(rows = vars(`Subject_tax`), cols = vars(`Experimental.Day`)) + 
+  labs(y = "Time (s)", x = "Bottle Addition Status", title = "Average Climb Duration")+ 
+  geom_hline(yintercept = 1800) +
+   theme_bw()+
+  theme(plot.title = element_text(hjust = .5))
+ 
+```
+Predation Counts & Success (not corrected for time)
+```{r}
+
+trunc %>%
+  filter(Subject == "Octopus", Behavior %in% c("Predation", "Grope")) %>%
+  ggplot(aes(x = Experimental.Day, color = m2)) + 
+    scale_x_discrete(drop = FALSE)+
+  geom_line(stat = 'count', aes(group = m2))+
+  geom_point(stat = 'count', size = 2, position = position_dodge(0)) +
+  facet_wrap(~m1) +
+  labs(y = "Predation Events")+
+  scale_color_manual(values = c("blue", "red", "green"), labels = c("Grope", "Fail", "Success")) +
+  labs(title = "Predation & Grope Events") +
+   theme_bw()+
+  theme(plot.title= element_text(hjust = .5)) 
+ 
+trunc %>%
+  filter(Subject == "Octopus", Behavior %in% c("Predation", "Grope")) %>%
+  ggplot(aes(x = exposure, color = m2)) + 
+  geom_line(stat = 'count',aes(group = m2))+
+  geom_point(stat = 'count', size = 2, position = position_dodge(0)) +
+  facet_wrap(~m1) +
+  labs(y = "Predation Events")+
+  scale_color_manual(values = c("blue", "red", "green"), labels = c("Grope", "Fail", "Success")) +
+  labs(title = "Predation & Grope Events") +
+   theme_bw()+
+  theme(plot.title= element_text(hjust = .5)) 
+
+pred <-trunc %>%
+  filter(Subject == "Octopus", Behavior == "Predation") %>%
+  mutate(bin = case_when(m2 == "Successful" ~ 1, m2 == "Failed" ~ 0))
+pred$Experimental.Day <- as.numeric(pred$Experimental.Day)
+ggplot(pred, aes( x = exposure, y = bin, color = ind)) + 
+  geom_point(position = position_dodge2(.5)) + 
+  geom_smooth(method = 'glm', method.args = list(family = 'binomial'), se = FALSE) +
+  labs(y = "Predation Success") +
+  theme_bw() +
+  facet_wrap(~ind, ncol = 1)
+  
+```
+
+Predation & grope Plots (corrected for time observed)
+```{r}
+
+###Predation Events Only, Split by Individual
+psum1 <- trunc %>%
+  filter(Behavior %in% c("Predation")) %>%
+  group_by(ind,m2, exposure) %>%
+  summarise(count = length(X)) %>%
+  mutate(time = case_when(exposure == 'post' ~ "4", exposure == 'pre' ~ '6.5', exposure == 'act' ~ '1.5', TRUE ~ 'error')) 
+psum1$time <- as.numeric(psum1$time)
+psum1$count <- as.numeric(psum1$count)
+psum2<-psum1 %>%
+  mutate(ncount = log(count/time))
+psum2 %>%
+  ggplot(aes(x = exposure, y = ncount, color = m2))+
+  geom_line(aes(group = m2)) + 
+  geom_point() +
+  facet_wrap(~ind) +
+  labs(title = "Predation Events, normalized to Time Observed and on Log Scale", 
+       y = "Log of Events Per Hour")+
+  theme_bw()+
+  theme(plot.title= element_text(hjust = .5)) 
+
+
+###Predation & Grope, split by Individual
+pgsum <- trunc %>%
+  filter(Behavior %in% c("Predation", "Grope")) %>%
+  group_by(ind,m2, exposure) %>%
+  summarise(count = length(X)) %>%
+  mutate(time = case_when(exposure == 'post' ~ "4", exposure == 'pre' ~ '6.5', exposure == 'act' ~ '1.5', TRUE ~ 'error')) 
+pgsum$time <- as.numeric(pgsum$time)
+pgsum$count <- as.numeric(pgsum$count)
+pgsum1<-pgsum %>%
+  mutate(ncount = log(count/time))
+pgsum1 %>%
+  ggplot(aes(x = exposure, y = ncount, color = m2)) +
+  geom_line(aes(group = m2)) +
+  geom_point()+
+  facet_wrap(~ind) +
+  labs(title = "Predation & Gropes, normalized to Time Observed and on Log Scale", y = "Log of Events per Hour")+
+    scale_color_manual(values = c("blue", "red", "green"), labels = c("Grope", "Fail", "Success")) +
+  theme_bw()+
+  theme(plot.title = element_text(hjust = .5))
+
+
+### Predation & Grope, Split by Prey Taxa
+pgsum2 <- trunc %>%
+  filter(Behavior %in% c("Predation", "Grope")) %>%
+  group_by(m1, m2, exposure) %>%
+  summarise(count = length(X)) %>%
+  mutate(time = case_when(exposure == 'post' ~ "4", exposure == 'pre' ~ '6.5', exposure == 'act' ~ '1.5', TRUE ~ 'error')) 
+pgsum2$time <- as.numeric(pgsum2$time)
+pgsum2$count <- as.numeric(pgsum2$count)
+pgsum3 <- pgsum2 %>%
+  mutate(ncount = log(count/time))
+pgsum3 %>%
+  ggplot(aes(x= exposure, y = ncount, color = m2))+
+  geom_line(aes(group = m2)) +
+  geom_point()+
+  facet_wrap(~m1) +
+  scale_color_manual(values = c("blue", "red", "green"), labels = c("Grope", "Fail", "Success")) +
+  theme_bw() +
+  labs(y = "Log of Event Count", title = "Predation & Grope Events, adjusted for Time Observed and on Log Scale") +
+  theme(plot.title = element_text(hjust = .5))
+```
+Color Change Plots, corrected for time
+```{r}
+colorsum <- trunc %>%
+  filter(Behavior == "Color change") %>%
+  group_by(ind, exposure) %>%
+  summarise(count = length(X)) %>%
+  mutate(time = case_when(exposure == 'post' ~ "4", exposure == 'pre' ~ '6.5', exposure == 'act' ~ '1.5', TRUE ~ 'error')) 
+colorsum$count<-as.numeric(colorsum$count)
+colorsum$time<-as.numeric(colorsum$time)
+
+colorsum1 <- colorsum %>%
+  mutate(logncount = log(count/time))
+ggplot(colorsum1, aes(x = exposure, y = logncount, color = ind)) +
+  geom_line(aes(group = ind)) +
+  geom_point() + 
+  labs(title = "Color Changes, normalized to Time Observed and on Log Scale", y = 'Log of Color Changes per Hour', x = "Oleamide Exposure") +
+  theme_bw()+
+  theme(plot.title = element_text(hjust = .5))
+
+```
+
+

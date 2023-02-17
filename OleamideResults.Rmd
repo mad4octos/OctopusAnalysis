@@ -1,0 +1,34 @@
+---
+title: "Oleamide Results"
+author: "Madelyn Hair"
+date: "2023-02-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Install packages:
+```{r}
+library(dplyr)
+library(readxl)
+library(ggplot2)
+```
+
+```{r}
+
+ole <- read_excel("~/FAU/Research/Collected Data/Oleamide_all samples1.xlsx", 
+    sheet = "Summarized data in ppb")
+ole$Phase <- factor(ole$Phase, levels = c('pre', 'post'))
+ole$Phase <- factor(ole$Phase, levels = c("pre", "post"))
+ole$Tank <- as.factor(ole$Tank)
+
+t.test(`Conc (ppb)` ~ Phase, data = ole)
+ggplot(data = ole, aes(x = Phase, y = `Conc (ppb)`)) + 
+  geom_boxplot() +
+  labs( y = "Oleamide Concentration (ppb)", x = "Treatment")+
+  theme_bw()
+ole1<- ole %>%
+  filter(`Label on bottle` != 'Post Oleamide Tank 2a' )
+t.test(`Conc (ppb)` ~ Phase, data = ole1)
+```

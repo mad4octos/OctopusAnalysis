@@ -1,0 +1,107 @@
+---
+title: "dataWrangling"
+author: "Madelyn Hair"
+date: "2023-01-28"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## R Markdown
+
+Packages
+```{r}
+library("readr")  
+library(stringr)
+library(dplyr)
+library(gdata)
+library(magrittr)
+library(lubridate)
+library(hms)
+```
+
+Data
+```{r}
+all <- list.files(path = "data/agg",    
+                      pattern = "*.csv", full.names = TRUE) %>%
+  lapply(read_csv) %>%  
+  bind_rows
+all[c("ind", "obs")] <- str_split_fixed(all$`Observation id`, " ", 2)
+all$date <- as.Date(all$`Observation date`)
+all$time <- format(as.POSIXct(all$`Observation date`), format = "%H:%M:%S")
+
+write.csv(all, "data/all.csv")
+```
+
+Now go into excel and find/replace "|" for " O "
+
+Also, create a new table called rtime and make it = Start (s) / 86400 + time
+
+```{r}
+all1 <- read.csv("data/all.csv")
+all1[c('m1', 'm2')] <- str_split_fixed(all1$Modifiers, " O ",2)  
+all1 <- all1 %>%
+  mutate(Subject_tax  = dplyr::case_when(Subject %in% c("Clam1", "Clam2", "Clam3")~ "Clam", Subject %in% c("Hermit Crab1", "Hermit Crab2", "Hermit Crab3") ~ "Hermit Crab", Subject%in%c("Swim Crab1", "Swim Crab2", "Swim Crab3") ~ "Swim Crab", Subject%in%c("Snail1", "Snail2", "Snail3") ~ "Snail", Subject == "Octopus" ~ "Octopus", TRUE ~ "error"))
+all1$rtime <- as_hms(all1$rtime)
+
+```
+
+
+```{r}
+lexp <- all1 %>%
+  filter(ind == "Loki", date == '6/11/22')  %>%
+  mutate(exposure = case_when(rtime >= 45600 ~ 'act',rtime < 45600 ~ 'pre',  TRUE ~ 'error')) %>%
+  mutate(bottle = case_when(rtime >= 45600 ~ 'post', rtime < 45600 ~ 'pre', TRUE ~ 'error'))
+lpost<- all1%>%
+  filter(ind == "Loki", date == '6/14/22') %>%
+  mutate(exposure = "post") %>%
+  mutate(bottle = case_when(rtime < 38100 ~ 'pre', rtime >= 38100 ~ 'post'))
+rpre <- all1%>%
+  filter(ind == "Ragnar", date == '6/22/22') %>%
+  mutate(exposure = "pre") %>%
+  mutate(bottle = case_when(rtime < 37920 ~ 'pre', rtime >= 37920 ~ 'post'))
+rexp <- all1 %>%
+  filter(ind == "Ragnar", date == '6/27/22')  %>%
+  mutate(exposure = case_when(rtime >= 45180 ~ 'act',rtime < 45180 ~ 'pre',  TRUE ~ 'error')) %>%
+  mutate(bottle = case_when(rtime < 45180 ~ 'pre', rtime >= 45180 ~ 'post'))
+
+rpost <- all1 %>%
+   filter(ind == "Ragnar", date == '6/30/22')  %>%
+  mutate(exposure = 'post') %>%
+  mutate(bottle= case_when(rtime < 38700 ~ 'pre', rtime >= 38700 ~ 'post'))
+hpre <- all1 %>%
+   filter(ind == "Haliai", date == '7/7/22')  %>%
+  mutate(exposure = 'pre') %>%
+  mutate(bottle = case_when(rtime < 39780 ~ 'pre', rtime >= 39780 ~ 'post'))
+hexp <- all1%>%
+   filter(ind == "Haliai", date == '7/12/22')  %>%
+  mutate(exposure = case_when(rtime >= 44700 ~ 'act', rtime < 44700 ~ 'pre',  TRUE ~ 'error')) %>%
+  mutate(bottle = case_when(rtime < 44700 ~ 'pre', rtime >= 44700 ~ 'post'))
+hpost <- all1 %>%
+   filter(ind == "Haliai", date %in% c('7/15/22', '11/15/22'))  %>%
+  mutate(exposure = 'post') %>%
+  mutate(bottle = case_when(rtime < 382200 ~ 'pre', rtime >= 38220 ~ 'post'))
+
+
+all2 <- bind_rows(lexp, lpost, rpre, rexp, rpost, hpre, hexp, hpost)
+
+
+sub <- all2 %>%
+  filter(!date %in% c("7/15/22", '11/15/22')) %>%
+  mutate(rphoto = case_when(rtime <43200 ~ 'day', rtime <= 47520 ~ 'crep', TRUE ~ 'night'))
+sub1 <- all2 %>%
+  filter(date %in% c('7/15/22', '11/15/22')) %>%
+  mutate(rphoto = case_when(rtime < 43200 ~ "day", rtime >= 43200 ~ 'crep', TRUE ~ 'error'))
+all3<-bind_rows(sub,sub1)
+```
+
+```{r}
+
+write.csv(all3, "data/all1.csv")
+#I want to see if this works
+
+```
+
+

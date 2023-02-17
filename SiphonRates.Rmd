@@ -1,0 +1,61 @@
+---
+title: "Siphoning"
+author: "Madelyn Hair"
+date: "2023-02-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(gmodels)
+library(readxl)
+```
+
+```{r}
+siphon <- read_excel("~/FAU/Research/Collected Data/SiphonRates.xlsx")
+siphon$`Oleamide Status` <- factor(siphon$`Oleamide Status`, levels = c('pre', 'act', 'post'))
+siphon$`Bottle Status1` <- factor(siphon$`Bottle Status1`, levels = c('pre','post'))
+
+siphon1 <- siphon %>%
+  mutate(Ratem = `Siphon Rate` * 60)
+ggplot(data = siphon1, aes(y = `Ratem`, x = `Start time`, color = `Bottle Status1`)) +
+    geom_point() +
+    geom_boxplot()+
+  facet_wrap(~`Experimental Day`) +
+  labs(y = 'Siphons per Minute') +
+  theme_bw()
+  
+siphon1 %>%
+  ggplot(aes(y = Ratem, x = `Bottle Status1`, color = `Bottle Status1`)) +
+  geom_boxplot() +
+  facet_grid(cols = vars(`Experimental Day`),rows = vars(`Octopus`)) +
+  labs(y = 'Siphons per Minute', x = "Bottle Addition Status") +
+  theme_bw()
+```
+
+
+```{r}
+lower_ci <- function(mean, se, n, conf_level = 0.95){
+  lower_ci <- mean - qt(1 - ((1 - conf_level) / 2), n - 1) * se
+}
+upper_ci <- function(mean, se, n, conf_level = 0.95){
+  upper_ci <- mean + qt(1 - ((1 - conf_level) / 2), n - 1) * se
+}
+
+siphon1 %>%
+  filter_at(vars(Ratem), all_vars(!is.na(.))) %>%
+  group_by(Octopus, `Experimental Day`, `Bottle Status1`) %>%
+  summarise(mean = mean(Ratem), sd = sd(Ratem), count = n()) %>%
+   mutate(se = sd / sqrt(count),
+         lower_se = mean - se,
+         upper_se = mean + se) %>%
+  ggplot(aes(x = `Bottle Status1`, y = mean, color = Octopus)) +
+  geom_line(aes(group = Octopus)) + 
+  geom_point() + 
+  #geom_errorbar(aes(ymin = lower_se, ymax = upper_se), width = .2) +
+  facet_grid(~`Experimental Day`) + 
+  labs(y = "Siphons per Minute", x = "Bottle Addition Status", title = 'Experimental Day')+
+  theme_bw()+
+  theme(plot.title = element_text(hjust = .5)) +
+  ylim(20,40)
+``` 

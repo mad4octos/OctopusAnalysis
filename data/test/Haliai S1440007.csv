@@ -1,0 +1,116 @@
+Observation id,Haliai S1440007,,,,,,,,
+,,,,,,,,,
+Media file(s),,,,,,,,,
+,,,,,,,,,
+Player #1,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,,,,,,,,
+,,,,,,,,,
+Observation date,2022-07-07 13:40:00,,,,,,,,
+,,,,,,,,,
+Description,,,,,,,,,
+,,,,,,,,,
+Time offset (s),0.0,,,,,,,,
+,,,,,,,,,
+independent variables,,,,,,,,,
+variable,value,,,,,,,,
+Oleamide Exposure,pre,,,,,,,,
+Experimental Day,1,,,,,,,,
+Photoperiod,night,,,,,,,,
+Human Disturbance,no,,,,,,,,
+,,,,,,,,,
+Time,Media file path,Total length,FPS,Subject,Behavior,Behavioral category,Modifier 1,Comment,Status
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Clam1,Stationary,,Unknown,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Clam1,Vicinity,,,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Clam2,Stationary,,Unknown,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Clam2,Vicinity,,,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Clam3,Unobservable,,,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab1,Lontano,,,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab1,Roaming,,Beyond 1/2 tank L,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab2,Burrow,Evasion,,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab2,Lontano,,,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab3,Unobservable,,,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Octopus,Feeding,Feeding,Hermit crabs,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Octopus,Stationary,,Alert Sitting,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Octopus,Under Refuge,Evasion,,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Snail1,Burrow,Evasion,,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Snail1,Vicinity,,,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Snail2,Lontano,,,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Snail2,Roaming,,Beyond 1/2 tank L,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Snail3,Lontano,,,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Snail3,Unobservable,,,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab1,Lontano,,,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab1,Roaming,,Beyond 1/2 tank L,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab2,Stationary,,Unknown,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab2,Vicinity,,,,START
+0.000,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab3,Unobservable,,,,START
+84.721,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab1,Lontano,,,,STOP
+84.721,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab1,Roaming,,Beyond 1/2 tank L,,STOP
+84.722,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab1,Roaming,,Within 1/2 tank L,,START
+84.722,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab1,Vicinity,,,,START
+116.520,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab1,Roaming,,Beyond 1/2 tank L,,STOP
+116.521,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab1,Stationary,,Alert Sitting,,START
+134.038,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab2,Burrow,Evasion,,,STOP
+134.039,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab2,Stationary,,Alert Sitting,,START
+221.718,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab2,Stationary,,Alert Sitting,,STOP
+221.719,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab2,Roaming,,Beyond 1/2 tank L,,START
+571.423,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab2,Lontano,,,,STOP
+571.423,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab2,Roaming,,Beyond 1/2 tank L,,STOP
+571.424,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab2,Roaming,,Within 1/2 tank L,,START
+571.424,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab2,Vicinity,,,,START
+681.382,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab1,Roaming,,Within 1/2 tank L,,STOP
+681.382,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab1,Vicinity,,,,STOP
+681.383,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab1,Lontano,,,,START
+681.383,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab1,Roaming,,Beyond 1/2 tank L,,START
+784.130,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Clam1,Stationary,,Unknown,,STOP
+784.131,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Clam1,Stationary,,Alert Sitting,,START
+810.963,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab1,Stationary,,Alert Sitting,,STOP
+810.964,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab1,Roaming,,Beyond 1/2 tank L,,START
+877.865,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab1,Roaming,,Beyond 1/2 tank L,,STOP
+877.866,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab1,Stationary,,Alert Sitting,,START
+981.384,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab2,Roaming,,Within 1/2 tank L,,STOP
+981.384,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab2,Vicinity,,,,STOP
+981.385,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab2,Lontano,,,,START
+981.385,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab2,Roaming,,Beyond 1/2 tank L,,START
+1079.758,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab1,Roaming,,Beyond 1/2 tank L,,START
+1079.758,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab1,Stationary,,Alert Sitting,,STOP
+1187.913,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab1,Lontano,,,,STOP
+1187.913,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab1,Roaming,,Beyond 1/2 tank L,,STOP
+1187.914,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab1,Roaming,,Within 1/2 tank L,,START
+1187.914,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab1,Vicinity,,,,START
+1214.952,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab1,Roaming,,Beyond 1/2 tank L,,STOP
+1214.953,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab1,Stationary,,Alert Sitting,,START
+1289.443,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Clam1,Stationary,,Alert Sitting,,STOP
+1289.444,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Clam1,Stationary,,Unknown,,START
+1423.324,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab2,Roaming,,Beyond 1/2 tank L,,STOP
+1423.325,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab2,Stationary,,Alert Sitting,,START
+1478.132,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab1,Stationary,,Alert Sitting,,STOP
+1478.133,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab1,Roaming,,Beyond 1/2 tank L,,START
+1521.394,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab1,Roaming,,Beyond 1/2 tank L,,STOP
+1521.395,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab1,Stationary,,Alert Sitting,,START
+1732.299,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab1,Roaming,,Within 1/2 tank L,,STOP
+1732.299,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab1,Vicinity,,,,STOP
+1732.300,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab1,Lontano,,,,START
+1732.300,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab1,Roaming,,Beyond 1/2 tank L,,START
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Clam1,Stationary,,Unknown,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Clam1,Vicinity,,,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Clam2,Stationary,,Unknown,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Clam2,Vicinity,,,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Clam3,Unobservable,,,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab1,Lontano,,,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab1,Roaming,,Beyond 1/2 tank L,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab2,Lontano,,,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab2,Stationary,,Alert Sitting,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Hermit Crab3,Unobservable,,,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Octopus,Feeding,Feeding,Hermit crabs,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Octopus,Stationary,,Alert Sitting,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Octopus,Under Refuge,Evasion,,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Snail1,Burrow,Evasion,,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Snail1,Vicinity,,,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Snail2,Lontano,,,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Snail2,Roaming,,Beyond 1/2 tank L,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Snail3,Lontano,,,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Snail3,Unobservable,,,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab1,Lontano,,,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab1,Stationary,,Alert Sitting,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab2,Stationary,,Unknown,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab2,Vicinity,,,,STOP
+1800.799,/Volumes/McCoy Octo Data/OctopusVideos/Haliai/July7 (pre)/S1440007.MP4,1800.800,29.97,Swim Crab3,Unobservable,,,,STOP
