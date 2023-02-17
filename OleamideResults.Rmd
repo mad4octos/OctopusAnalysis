@@ -31,4 +31,5 @@ ggplot(data = ole, aes(x = Phase, y = `Conc (ppb)`)) +
 ole1<- ole %>%
   filter(`Label on bottle` != 'Post Oleamide Tank 2a' )
 t.test(`Conc (ppb)` ~ Phase, data = ole1)
+#testing to work
 ```
